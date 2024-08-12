@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_font_icons/flutter_font_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/models/header_item.dart';
 import 'package:portfolio/utils/constants.dart';
@@ -55,7 +54,7 @@ class Header extends StatelessWidget {
                 Globals.scaffoldKey.currentState!.openEndDrawer();
               },
               child: Icon(
-                FontAwesome.navicon,
+              Icons.menu,
                 color: Colors.white,
                 size: 28.0,
               ),
