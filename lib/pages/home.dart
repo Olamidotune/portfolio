@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/carousel.dart';
 import 'package:portfolio/components/header.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/globals.dart';
@@ -67,8 +68,9 @@ class Home extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                child:Header(),
-              )
+                child: Header(),
+              ),
+              Carousel(),
             ],
           ),
         ),
