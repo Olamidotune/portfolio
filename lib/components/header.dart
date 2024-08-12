@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_font_icons/flutter_font_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/models/header_item.dart';
 import 'package:portfolio/utils/constants.dart';
@@ -37,17 +38,30 @@ class Header extends StatelessWidget {
     );
   }
 
+ // mobile header
   Widget buildMobileHeader() {
     return SafeArea(
-      child: Row(
-        children: [
-          HeaderLogo(),
-          GestureDetector(
-            onTap: () {
-              Globals.scaffoldKey.currentState!.openEndDrawer();
-            },
-          )
-        ],
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            HeaderLogo(),
+            // Restart server to make icons work
+            // Lets make a scaffold key and create a drawer
+            GestureDetector(
+              onTap: () {
+                // Lets open drawer using global key
+                Globals.scaffoldKey.currentState!.openEndDrawer();
+              },
+              child: Icon(
+                FontAwesome.navicon,
+                color: Colors.white,
+                size: 28.0,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -55,12 +69,16 @@ class Header extends StatelessWidget {
   Widget buildTabletHeader() {
     return Padding(
       padding: const EdgeInsets.all(15.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          HeaderLogo(),
-          HeaderRow(),
-        ],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: BouncingScrollPhysics(),
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            HeaderLogo(),
+            HeaderRow(),
+          ],
+        ),
       ),
     );
   }
@@ -157,6 +175,7 @@ class HeaderRow extends StatelessWidget {
                     : MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child: Container(
+
                           margin: EdgeInsets.only(right: 30.0),
                           child: GestureDetector(
                             onTap: e.onTap,
