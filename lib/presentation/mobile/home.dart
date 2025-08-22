@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:my_portfolio_app/constants/app_colors.dart';
 import 'package:my_portfolio_app/constants/app_spacing.dart';
+import 'package:my_portfolio_app/presentation/contact_section.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/header_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/info_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/my_drawer.dart';
@@ -170,6 +171,8 @@ class PortfolioHome extends HookWidget {
                         ),
                         AppSpacing.verticalSpaceLarge,
                         const SkillsSection(),
+                        AppSpacing.verticalSpaceLarge,
+                        const ContactSection(),
                       ],
                     ),
                   ),

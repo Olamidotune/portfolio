@@ -45,7 +45,7 @@ class SkillsSection extends StatelessWidget {
 class SkillsGrid extends StatelessWidget {
   final int crossAxisCount;
 
-  const SkillsGrid({Key? key, required this.crossAxisCount}) : super(key: key);
+  const SkillsGrid({super.key, required this.crossAxisCount});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class SkillsGrid extends StatelessWidget {
 class SkillCard extends StatefulWidget {
   final SkillCategory skillCategory;
 
-  const SkillCard({Key? key, required this.skillCategory}) : super(key: key);
+  const SkillCard({super.key, required this.skillCategory});
 
   @override
   State<SkillCard> createState() => _SkillCardState();
@@ -485,7 +485,7 @@ final List<SkillCategory> skillCategories = [
   SkillCategory(
     title: 'Mobile Development',
     description:
-        'Comprehensive mobile app development with Flutter, focusing on cross-platform solutions, native integrations, and optimal user experiences across iOS and Android platforms.',
+        'Comprehensive mobile app development with Flutter, focusing on cross-platform solutions and optimal user experiences across iOS and Android platforms.',
     icon: Icons.phone_android,
     primaryColor: const Color(0xFF2196F3),
     secondaryColor: const Color(0xFF21CBF3),
@@ -512,9 +512,6 @@ final List<SkillCategory> skillCategories = [
       const Skill(name: 'BLoC Pattern', proficiency: 0.92),
       const Skill(name: 'Provider', proficiency: 0.90),
       const Skill(name: 'Riverpod', proficiency: 0.88),
-      const Skill(name: 'GetX', proficiency: 0.75),
-      const Skill(name: 'Redux', proficiency: 0.70),
-      const Skill(name: 'MobX', proficiency: 0.65),
       const Skill(name: 'Cubit', proficiency: 0.85),
     ],
   ),
@@ -532,8 +529,6 @@ final List<SkillCategory> skillCategories = [
       const Skill(name: 'Custom Widgets', proficiency: 0.90),
       const Skill(name: 'Animations & Transitions', proficiency: 0.87),
       const Skill(name: 'Responsive Design', proficiency: 0.85),
-      const Skill(name: 'Accessibility (a11y)', proficiency: 0.80),
-      const Skill(name: 'Custom Paint & Canvas', proficiency: 0.75),
       const Skill(name: 'Theme Management', proficiency: 0.90),
     ],
   ),
@@ -548,10 +543,6 @@ final List<SkillCategory> skillCategories = [
     skills: [
       const Skill(name: 'Firebase', proficiency: 0.90),
       const Skill(name: 'REST APIs', proficiency: 0.92),
-      const Skill(name: 'GraphQL', proficiency: 0.75),
-      const Skill(name: 'SQLite', proficiency: 0.88),
-      const Skill(name: 'Supabase', proficiency: 0.80),
-      const Skill(name: 'AWS Services', proficiency: 0.70),
       const Skill(name: 'Real-time Data', proficiency: 0.85),
       const Skill(name: 'Authentication', proficiency: 0.88),
     ],
@@ -589,7 +580,7 @@ final List<SkillCategory> skillCategories = [
       const Skill(name: 'GitHub Actions', proficiency: 0.80),
       const Skill(name: 'Fastlane', proficiency: 0.75),
       const Skill(name: 'App Distribution', proficiency: 0.85),
-      const Skill(name: 'Code Review', proficiency: 0.88),
+      const Skill(name: 'Code Review', proficiency: 0.68),
     ],
   ),
 ];
