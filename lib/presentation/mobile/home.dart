@@ -167,6 +167,7 @@ class PortfolioHome extends HookWidget {
                             child: ProjectsGrid(projects: sampleProjects),
                           ),
                         ),
+                        AppSpacing.verticalSpaceLarge,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           spacing: 30,
