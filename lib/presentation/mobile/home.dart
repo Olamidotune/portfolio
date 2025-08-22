@@ -9,7 +9,8 @@ import 'package:my_portfolio_app/presentation/web/widgets/info_desktop.dart';
 import 'package:my_portfolio_app/presentation/web/widgets/header_desktop.dart';
 import 'package:my_portfolio_app/presentation/widgets/my_stack_container_mobile_view.dart';
 import 'package:my_portfolio_app/presentation/widgets/my_stack_container_web_view.dart';
-import 'package:my_portfolio_app/presentation/widgets/project_card.dart';
+import 'package:my_portfolio_app/presentation/widgets/project.dart';
+import 'package:my_portfolio_app/presentation/widgets/project_grid.dart';
 
 class PortfolioHome extends HookWidget {
   const PortfolioHome({super.key});
@@ -155,11 +156,73 @@ class PortfolioHome extends HookWidget {
                           textAlign: TextAlign.center,
                         ),
                         AppSpacing.verticalSpaceMedium,
-                        SizedBox(
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor.withValues(alpha: .1),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                           height: 500,
-                          child: ProjectsGrid(projects: sampleProjects),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: ProjectsGrid(projects: sampleProjects),
+                          ),
                         ),
-                        AppSpacing.verticalSpaceLarge,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          spacing: 30,
+                          children: [
+                            Chip(
+                              label: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  FlutterLogo(size: 50),
+                                  AppSpacing.horizontalSpaceSmall,
+                                  Text(
+                                    'Flutter ',
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Chip(
+                              label: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/dart.png',
+                                    height: 50,
+                                    width: 50,
+                                  ),
+                                  AppSpacing.horizontalSpaceSmall,
+                                  Text(
+                                    'Dart',
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Chip(
+                              label: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/go.png',
+                                    height: 50,
+                                    width: 50,
+                                  ),
+                                  AppSpacing.horizontalSpaceSmall,
+                                  Text(
+                                    'GoLang',
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
