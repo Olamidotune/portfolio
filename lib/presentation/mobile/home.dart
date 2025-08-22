@@ -5,6 +5,7 @@ import 'package:my_portfolio_app/constants/app_spacing.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/header_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/info_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/my_drawer.dart';
+import 'package:my_portfolio_app/presentation/skills_section.dart';
 import 'package:my_portfolio_app/presentation/web/widgets/info_desktop.dart';
 import 'package:my_portfolio_app/presentation/web/widgets/header_desktop.dart';
 import 'package:my_portfolio_app/presentation/widgets/my_stack_container_mobile_view.dart';
@@ -168,62 +169,7 @@ class PortfolioHome extends HookWidget {
                           ),
                         ),
                         AppSpacing.verticalSpaceLarge,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          spacing: 30,
-                          children: [
-                            Chip(
-                              label: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  FlutterLogo(size: 50),
-                                  AppSpacing.horizontalSpaceSmall,
-                                  Text(
-                                    'Flutter ',
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Chip(
-                              label: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/dart.png',
-                                    height: 50,
-                                    width: 50,
-                                  ),
-                                  AppSpacing.horizontalSpaceSmall,
-                                  Text(
-                                    'Dart',
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Chip(
-                              label: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/go.png',
-                                    height: 50,
-                                    width: 50,
-                                  ),
-                                  AppSpacing.horizontalSpaceSmall,
-                                  Text(
-                                    'GoLang',
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                        const SkillsSection(),
                       ],
                     ),
                   ),
