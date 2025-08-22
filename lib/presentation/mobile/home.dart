@@ -9,6 +9,7 @@ import 'package:my_portfolio_app/presentation/web/widgets/info_desktop.dart';
 import 'package:my_portfolio_app/presentation/web/widgets/header_desktop.dart';
 import 'package:my_portfolio_app/presentation/widgets/my_stack_container_mobile_view.dart';
 import 'package:my_portfolio_app/presentation/widgets/my_stack_container_web_view.dart';
+import 'package:my_portfolio_app/presentation/widgets/project_card.dart';
 
 class PortfolioHome extends HookWidget {
   const PortfolioHome({super.key});
@@ -154,32 +155,10 @@ class PortfolioHome extends HookWidget {
                           textAlign: TextAlign.center,
                         ),
                         AppSpacing.verticalSpaceMedium,
-
-                        Container(
-                          padding: EdgeInsets.all(AppSpacing.horizontalSpacing),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: AppColors.primaryColor.withValues(alpha: .1),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Container(
-                            height: 280,
-                            width: 250,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color:
-                                  Theme.of(
-                                    context,
-                                  ).inputDecorationTheme.fillColor,
-                            ),
-                            child: Column(
-                              children: [
-                                Image.asset('assets/screenshots/x101/1.png'),
-                              ],
-                            ),
-                          ),
+                        SizedBox(
+                          height: 500,
+                          child: ProjectsGrid(projects: sampleProjects),
                         ),
-
                         AppSpacing.verticalSpaceLarge,
                       ],
                     ),

@@ -25,6 +25,11 @@ final ThemeData lightTheme = ThemeData(
     bodyLarge: GoogleFonts.manrope(color: AppColors.textColor),
     bodyMedium: GoogleFonts.manrope(color: AppColors.textColor),
     bodySmall: GoogleFonts.manrope(color: AppColors.greyColor),
+    displayLarge: GoogleFonts.manrope(
+      color: AppColors.textColor,
+      fontWeight: FontWeight.bold,
+      fontSize: 40,
+    ),
     displaySmall: GoogleFonts.manrope(color: AppColors.textColor),
     headlineSmall: GoogleFonts.manrope(
       color: AppColors.textColor,
@@ -80,6 +85,11 @@ final ThemeData darkTheme = ThemeData(
     bodyLarge: GoogleFonts.manrope(color: Colors.white),
     bodyMedium: GoogleFonts.manrope(color: AppColors.whiteColor),
     bodySmall: GoogleFonts.manrope(color: AppColors.whiteColor),
+    displayLarge: GoogleFonts.manrope(
+      color: AppColors.whiteColor,
+      fontSize: 40,
+      fontWeight: FontWeight.bold,
+    ),
     displaySmall: GoogleFonts.manrope(
       color: AppColors.accentNeon,
       fontSize: 18,
