@@ -10,22 +10,16 @@ class ProjectsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return GridView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: projects.length,
-            childAspectRatio: 0.75,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 50,
-          ),
-          itemCount: projects.length,
-          itemBuilder: (context, index) {
-            return ProjectCard(project: projects[index]);
-          },
-        );
-      },
+    return Container(
+      padding: const EdgeInsets.all(20.0),
+      width: MediaQuery.of(context).size.width * .7,
+      child: PageView.builder(
+        itemCount: projects.length,
+        physics: const PageScrollPhysics(),
+        itemBuilder: (context, index) {
+          return ProjectCard(project: projects[index]);
+        },
+      ),
     );
   }
 }

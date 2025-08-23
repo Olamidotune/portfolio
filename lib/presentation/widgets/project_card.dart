@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio_app/constants/app_colors.dart';
 import 'package:my_portfolio_app/constants/app_spacing.dart';
 import 'package:my_portfolio_app/presentation/widgets/project.dart';
+import 'package:my_portfolio_app/presentation/widgets/project_content.dart';
 import 'package:my_portfolio_app/presentation/widgets/project_details_modal.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:my_portfolio_app/presentation/widgets/project_image.dart';
 
 class ProjectCard extends StatefulWidget {
   final Project project;
@@ -51,7 +51,7 @@ class _ProjectCardState extends State<ProjectCard>
         return Transform.scale(
           scale: _scaleAnimation.value,
           child: Padding(
-            padding: EdgeInsets.zero,
+            padding: EdgeInsets.all(AppSpacing.alertDialogInsetPadding),
             child: MouseRegion(
               onEnter: (_) => _animationController.forward(),
               onExit: (_) => _animationController.reverse(),
@@ -62,16 +62,13 @@ class _ProjectCardState extends State<ProjectCard>
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor.withValues(alpha: .1),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    padding: EdgeInsets.all(1),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [_buildProjectImage(), _buildProjectContent()],
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Expanded(flex: 6, child: ProjectImage(widget: widget)),
+                      Expanded(flex: 10, child: ProjectContent(widget: widget)),
+                    ],
                   ),
                 ),
               ),
@@ -82,133 +79,10 @@ class _ProjectCardState extends State<ProjectCard>
     );
   }
 
-  Widget _buildProjectImage() {
-    return Container(
-      height: 200,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: widget.project.gradientColors,
-        ),
-      ),
-      child: Center(child: widget.project.icon),
-    );
-  }
-
-  Widget _buildProjectContent() {
-    return Padding(
-      padding: EdgeInsets.all(AppSpacing.horizontalSpacing),
-      child: Column(
-        children: [
-          Text(
-            widget.project.title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          AppSpacing.verticalSpaceMedium,
-          Text(
-            widget.project.description,
-            style: TextStyle(fontSize: 14, height: 1.4),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          AppSpacing.verticalSpaceMedium,
-          // Tech tags
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children:
-                widget.project.techStack
-                    .map((tech) => _buildTechTag(tech))
-                    .toList(),
-          ),
-          AppSpacing.verticalSpaceMedium,
-          // Action buttons
-          Row(
-            children: [
-              if (widget.project.demoUrl != null)
-                _buildActionButton(
-                  'Live Demo',
-                  'new-tab',
-                  () => _launchUrl(widget.project.demoUrl!),
-                ),
-              AppSpacing.horizontalSpaceSmall,
-              _buildActionButton(
-                'PlayStore',
-                'play_store',
-                () => _launchUrl(widget.project.playStoreUrl!),
-              ),
-              AppSpacing.horizontalSpaceSmall,
-              _buildActionButton(
-                'App Store',
-                'apple',
-                () => _launchUrl(widget.project.appStoreUrl!),
-              ),
-              AppSpacing.horizontalSpaceSmall,
-              if (widget.project.demoUrl != null &&
-                  widget.project.codeUrl != null)
-                const SizedBox(width: 12),
-              if (widget.project.codeUrl != null)
-                _buildActionButton(
-                  'View Code',
-                  'new-tab',
-                  () => _launchUrl(widget.project.codeUrl!),
-                ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTechTag(String tech) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: AppColors.primaryColor,
-      ),
-      child: Text(
-        tech,
-        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-      ),
-    );
-  }
-
-  Widget _buildActionButton(String text, String icon, VoidCallback onPressed) {
-    return Expanded(
-      child: ElevatedButton.icon(
-        onPressed: onPressed,
-        icon: Image.asset('assets/images/$icon.png', height: 20, width: 20),
-        label: Text(
-          text,
-          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-        ),
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          padding: const EdgeInsets.symmetric(vertical: 8),
-        ),
-      ),
-    );
-  }
-
   void _showProjectDetails(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) => ProjectDetailsModal(project: widget.project),
     );
-  }
-
-  void _launchUrl(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
-      debugPrint('Could not launch $url');
-    }
   }
 }
