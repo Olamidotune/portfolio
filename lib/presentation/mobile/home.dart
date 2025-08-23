@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:my_portfolio_app/constants/app_colors.dart';
 import 'package:my_portfolio_app/constants/app_spacing.dart';
 import 'package:my_portfolio_app/presentation/contact_section.dart';
-import 'package:my_portfolio_app/presentation/demo.dart';
+import 'package:my_portfolio_app/presentation/project_section.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/header_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/info_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/my_drawer.dart';
@@ -67,9 +67,7 @@ class PortfolioHome extends HookWidget {
                         AppSpacing.verticalSpaceMedium,
                         SizedBox(
                           height: 500,
-                          child: CustomScrollBehaviorDemo(
-                            constraints: constraints,
-                          ),
+                          child: ProjectSection(constraints: constraints),
                         ),
                         AppSpacing.verticalSpaceLarge,
                         const SkillsSection(),

@@ -33,9 +33,9 @@ class CustomScrollBehavior extends MaterialScrollBehavior {
   };
 }
 
-class CustomScrollBehaviorDemo extends HookWidget {
+class ProjectSection extends HookWidget {
   final BoxConstraints constraints;
-  const CustomScrollBehaviorDemo({super.key, required this.constraints});
+  const ProjectSection({super.key, required this.constraints});
 
   @override
   Widget build(BuildContext context) {
