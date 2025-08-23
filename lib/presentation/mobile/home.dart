@@ -14,7 +14,7 @@ import 'package:my_portfolio_app/presentation/web/widgets/header_desktop.dart';
 class PortfolioHome extends HookWidget {
   const PortfolioHome({super.key});
 
-  static const String routeName = 'home';
+  static const String routeName = '/home';
 
   @override
   Widget build(BuildContext context) {
