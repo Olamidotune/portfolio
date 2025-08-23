@@ -39,7 +39,9 @@ class InfoDesktop extends StatelessWidget {
                     width: 200,
                     child: TextButton(
                       onPressed: () {
-                        launchResumeLink();
+                        launchResumeLink(
+                          'https://flowcv.com/resume/5k7tubs0be',
+                        );
                       },
                       child: Row(
                         spacing: 10,
@@ -97,14 +99,16 @@ class AnimatedIntroText extends StatelessWidget {
       pause: const Duration(milliseconds: 1000),
       animatedTexts: [
         TyperAnimatedText(
-          "👋 Hi, I'm Egundeyi Oladotun David",
+          // "👋 Hi, I'm Egundeyi Oladotun David",
+          '',
           textStyle: Theme.of(
             context,
           ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
           speed: const Duration(milliseconds: 120),
         ),
         TyperAnimatedText(
-          "👨‍💻 A Flutter Developer",
+          // "👨‍💻 A Flutter Developer",
+          '',
           textStyle: Theme.of(
             context,
           ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),

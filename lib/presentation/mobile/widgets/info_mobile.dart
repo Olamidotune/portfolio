@@ -42,7 +42,7 @@ class InfoMobile extends StatelessWidget {
         AppSpacing.verticalSpaceMedium,
         ElevatedButton(
           onPressed: () {
-            launchResumeLink();
+            launchResumeLink('https://flowcv.com/resume/5k7tubs0be');
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -58,8 +58,8 @@ class InfoMobile extends StatelessWidget {
   }
 }
 
-void launchResumeLink() async {
-  final uri = Uri.parse('https://flowcv.com/resume/5k7tubs0be');
+void launchResumeLink(String url) async {
+  final uri = Uri.parse(url);
   if (await canLaunchUrl(uri)) {
     launchUrl(uri);
   } else {

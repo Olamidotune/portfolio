@@ -3,16 +3,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:my_portfolio_app/constants/app_colors.dart';
 import 'package:my_portfolio_app/constants/app_spacing.dart';
 import 'package:my_portfolio_app/presentation/contact_section.dart';
+import 'package:my_portfolio_app/presentation/demo.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/header_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/info_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/my_drawer.dart';
 import 'package:my_portfolio_app/presentation/skills_section.dart';
 import 'package:my_portfolio_app/presentation/web/widgets/info_desktop.dart';
 import 'package:my_portfolio_app/presentation/web/widgets/header_desktop.dart';
-import 'package:my_portfolio_app/presentation/widgets/my_stack_container_mobile_view.dart';
-import 'package:my_portfolio_app/presentation/widgets/my_stack_container_web_view.dart';
-import 'package:my_portfolio_app/presentation/widgets/project.dart';
-import 'package:my_portfolio_app/presentation/widgets/project_grid.dart';
 
 class PortfolioHome extends HookWidget {
   const PortfolioHome({super.key});
@@ -57,96 +54,6 @@ class PortfolioHome extends HookWidget {
                             ? InfoDesktop(controller: controller)
                             : InfoMobile(controller: controller),
                         AppSpacing.verticalSpaceLarge,
-                        Container(
-                          padding: EdgeInsets.all(AppSpacing.horizontalSpacing),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: AppColors.primaryColor.withValues(alpha: .1),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            children: [
-                              Text(
-                                'My Skills',
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.displayLarge?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 32,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              AppSpacing.verticalSpaceMedium,
-                              constraints.maxWidth > 886
-                                  ? const MyStackContainerWebView()
-                                  : const MyStackContainerMobileView(),
-                              AppSpacing.verticalSpaceLarge,
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                spacing: 30,
-                                children: [
-                                  Chip(
-                                    label: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        FlutterLogo(size: 50),
-                                        AppSpacing.horizontalSpaceSmall,
-                                        Text(
-                                          'Flutter ',
-                                          style:
-                                              Theme.of(
-                                                context,
-                                              ).textTheme.titleLarge,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Chip(
-                                    label: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Image.asset(
-                                          'assets/images/dart.png',
-                                          height: 50,
-                                          width: 50,
-                                        ),
-                                        AppSpacing.horizontalSpaceSmall,
-                                        Text(
-                                          'Dart',
-                                          style:
-                                              Theme.of(
-                                                context,
-                                              ).textTheme.titleLarge,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Chip(
-                                    label: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Image.asset(
-                                          'assets/images/go.png',
-                                          height: 50,
-                                          width: 50,
-                                        ),
-                                        AppSpacing.horizontalSpaceSmall,
-                                        Text(
-                                          'GoLang',
-                                          style:
-                                              Theme.of(
-                                                context,
-                                              ).textTheme.titleLarge,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        AppSpacing.verticalSpaceLarge,
                         Text(
                           'Projects I have built over the years\nas a Flutter Developer',
                           style: Theme.of(
@@ -158,15 +65,10 @@ class PortfolioHome extends HookWidget {
                           textAlign: TextAlign.center,
                         ),
                         AppSpacing.verticalSpaceMedium,
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.primaryColor.withValues(alpha: .1),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                        SizedBox(
                           height: 500,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: ProjectsGrid(projects: sampleProjects),
+                          child: CustomScrollBehaviorDemo(
+                            constraints: constraints,
                           ),
                         ),
                         AppSpacing.verticalSpaceLarge,

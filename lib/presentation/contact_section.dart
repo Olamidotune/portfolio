@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactSection extends StatelessWidget {
-  const ContactSection({Key? key}) : super(key: key);
+  const ContactSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class ContactSection extends StatelessWidget {
 }
 
 class ContactDesktopLayout extends StatelessWidget {
-  const ContactDesktopLayout({Key? key}) : super(key: key);
+  const ContactDesktopLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,7 @@ class ContactDesktopLayout extends StatelessWidget {
 }
 
 class ContactMobileLayout extends StatelessWidget {
-  const ContactMobileLayout({Key? key}) : super(key: key);
+  const ContactMobileLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +109,7 @@ class ContactMobileLayout extends StatelessWidget {
 }
 
 class ContactInfoCards extends StatelessWidget {
-  const ContactInfoCards({Key? key}) : super(key: key);
+  const ContactInfoCards({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -130,8 +130,7 @@ class ContactInfoCards extends StatelessWidget {
 class ContactInfoCard extends StatefulWidget {
   final ContactInfo contactInfo;
 
-  const ContactInfoCard({Key? key, required this.contactInfo})
-    : super(key: key);
+  const ContactInfoCard({super.key, required this.contactInfo});
 
   @override
   State<ContactInfoCard> createState() => _ContactInfoCardState();
@@ -664,13 +663,13 @@ class SocialLink {
 final List<ContactInfo> contactInfoItems = [
   const ContactInfo(
     label: 'Email',
-    value: 'your.email@example.com',
+    value: 'Davidegundeyi@gmail.com',
     icon: Icons.email_outlined,
     type: ContactType.email,
   ),
   const ContactInfo(
     label: 'Phone',
-    value: '+1 (555) 123-4567',
+    value: '+234 813 572 7584',
     icon: Icons.phone_outlined,
     type: ContactType.phone,
   ),
@@ -685,25 +684,25 @@ final List<ContactInfo> contactInfoItems = [
 final List<SocialLink> socialLinks = [
   const SocialLink(
     name: 'GitHub',
-    url: 'https://github.com/yourusername',
+    url: 'https://github.com/olamidotune',
     icon: Icons.code,
     color: Color(0xFF333333),
   ),
   const SocialLink(
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/yourusername',
+    url: 'https://www.linkedin.com/in/egundeyi-oladotun/',
     icon: Icons.business_center,
     color: Color(0xFF0077B5),
   ),
   const SocialLink(
     name: 'Twitter',
-    url: 'https://twitter.com/yourusername',
+    url: 'https://twitter.com/dotun_e',
     icon: Icons.alternate_email,
     color: Color(0xFF1DA1F2),
   ),
   const SocialLink(
     name: 'Instagram',
-    url: 'https://instagram.com/yourusername',
+    url: 'https://instagram.com/dotun_e',
     icon: Icons.camera_alt,
     color: Color(0xFFE4405F),
   ),
