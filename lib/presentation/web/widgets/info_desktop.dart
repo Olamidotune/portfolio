@@ -92,25 +92,35 @@ class AnimatedIntroText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedTextKit(
-      repeatForever: true,
-      pause: const Duration(milliseconds: 1000),
-      animatedTexts: [
-        TyperAnimatedText(
-          // "👋 Hi, I'm Egundeyi Oladotun David",
-          '',
-          textStyle: Theme.of(
-            context,
-          ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
-          speed: const Duration(milliseconds: 120),
-        ),
-        TyperAnimatedText(
-          // "👨‍💻 A Flutter Developer",
-          '',
-          textStyle: Theme.of(
-            context,
-          ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
-          speed: const Duration(milliseconds: 120),
+    return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        Text("👋 Hi, I'm ", style: Theme.of(context).textTheme.displayLarge),
+        SizedBox(
+          width:
+              MediaQuery.of(context).size.width > 600
+                  ? 400
+                  : MediaQuery.of(context).size.width * 0.8,
+          child: AnimatedTextKit(
+            repeatForever: true,
+            pause: const Duration(milliseconds: 1000),
+            animatedTexts: [
+              TyperAnimatedText(
+                "Egundeyi Oladotun.",
+                textStyle: Theme.of(
+                  context,
+                ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
+                speed: const Duration(milliseconds: 100),
+              ),
+              TyperAnimatedText(
+                "A Flutter Developer.",
+                textStyle: Theme.of(
+                  context,
+                ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
+                speed: const Duration(milliseconds: 100),
+              ),
+            ],
+          ),
         ),
       ],
     );

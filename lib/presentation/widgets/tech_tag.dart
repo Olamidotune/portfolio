@@ -18,8 +18,8 @@ class TechTag extends StatelessWidget {
                 (tech) => Container(
                   margin: const EdgeInsets.only(right: 10),
                   padding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 8,
+                    vertical: 20,
+                    horizontal: 20,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),

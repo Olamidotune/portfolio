@@ -16,7 +16,7 @@ class ActionButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           color: AppColors.primaryColor,
         ),
-        child: Image.asset('assets/images/$icon.png', height: 24, width: 24),
+        child: Image.asset('assets/images/$icon.png', height: 40, width: 40),
       ),
     );
   }

@@ -35,22 +35,23 @@ class PortfolioHome extends HookWidget {
                 appBar: AppBar(
                   automaticallyImplyLeading: false,
                   title:
-                      constraints.maxWidth > 676
+                      constraints.maxWidth > 695
                           ? HeaderDesktop(navTitles: navTitles)
                           : const SizedBox.shrink(),
                 ),
                 endDrawer:
-                    constraints.maxWidth <= 676
+                    constraints.maxWidth <= 695
                         ? MyDrawer(controller: controller)
                         : null,
                 body: SingleChildScrollView(
                   controller: scrollController,
                   physics: const BouncingScrollPhysics(),
                   child: Padding(
-                    padding: EdgeInsets.all(
-                      constraints.maxWidth > 654
-                          ? 100
-                          : AppSpacing.horizontalSpacing,
+                    padding: EdgeInsets.symmetric(
+                      horizontal:
+                          constraints.maxWidth > 654
+                              ? 100
+                              : AppSpacing.horizontalSpacing,
                     ),
                     child: Column(
                       children: [
