@@ -29,9 +29,7 @@ class InfoDesktop extends StatelessWidget {
                   AppSpacing.verticalSpaceMedium,
                   Text(
                     "Detail-oriented and technically proficient Flutter developer with a strong foundation in building and  maintaining cross-platform mobile applications. Experienced in developing clean, scalable codebases using Bloc architecture and Freezed for robust state management. Demonstrates a solid grasp of API integration, data handling, and user role-based system design, with a focus on performance, reliability, and maintainability. Committed to continuous learning and delivering high-quality software solutions that align with business goals.",
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyLarge?.copyWith(color: AppColors.greyColor),
+                    style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.justify,
                   ),
                   AppSpacing.verticalSpaceMedium,

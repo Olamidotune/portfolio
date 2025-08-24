@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio_app/constants/app_spacing.dart';
 import 'package:my_portfolio_app/presentation/widgets/skills/skill_card.dart';
 import 'package:my_portfolio_app/utils/skill_category.dart';
 
@@ -8,24 +9,18 @@ class SkillsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
       child: Column(
         children: [
-          const Text(
-            'Skills & Expertise',
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF2C3E50),
-            ),
-          ),
-          const SizedBox(height: 16),
           Text(
-            'Comprehensive Flutter development skills with focus on performance, architecture, and user experience',
-            style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+            'Skills & Expertise',
+
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+              fontSize: 32,
+            ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 50),
+          AppSpacing.verticalSpaceMedium,
           LayoutBuilder(
             builder: (context, constraints) {
               return SkillsGrid(

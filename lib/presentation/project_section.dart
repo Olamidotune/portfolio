@@ -66,14 +66,6 @@ class ProjectSection extends HookWidget {
         currentIndex,
         pageController,
       );
-    } else if (screenWidth < 885) {
-      return _buildTabletLayout(
-        context,
-        screenWidth,
-        screenHeight,
-        currentIndex,
-        pageController,
-      );
     } else {
       return _buildDesktopLayout(screenWidth, currentIndex);
     }
@@ -86,37 +78,16 @@ class ProjectSection extends HookWidget {
     PageController pageController,
   ) {
     return ListView(
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         SizedBox(
           width: screenWidth * 0.8,
           height: screenHeight * 0.43,
           child: _buildPageView(currentIndex, pageController),
         ),
-        AppSpacing.horizontalSpaceMedium,
+        AppSpacing.verticalSpaceTiny,
+        _buildDots(currentIndex.value),
       ],
-    );
-  }
-
-  Widget _buildTabletLayout(
-    BuildContext context,
-    double screenWidth,
-    double screenHeight,
-    ValueNotifier<int> currentIndex,
-    PageController pageController,
-  ) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.2),
-      child: Column(
-        children: [
-          SizedBox(
-            width: screenWidth * 0.8, // Fixed from * 15
-            height: screenHeight * 0.43,
-            child: _buildPageView(currentIndex, pageController),
-          ),
-          AppSpacing.verticalSpaceMedium,
-          _buildDots(currentIndex.value),
-        ],
-      ),
     );
   }
 
@@ -128,21 +99,21 @@ class ProjectSection extends HookWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
-          child: SizedBox(
-            width: screenWidth * 0.7,
-            child: CarouselSlider.builder(
-              itemCount: sampleProjects.length,
-              options: CarouselOptions(
-                enlargeCenterPage: true,
-                enableInfiniteScroll: false,
-                autoPlay: false,
-                viewportFraction: 0.6,
-                onPageChanged:
-                    (newIndex, reason) => currentIndex.value = newIndex,
-              ),
-              itemBuilder:
-                  (context, index, realIndex) => _buildProjectCard(index),
+          child: CarouselSlider.builder(
+            itemCount: sampleProjects.length,
+            options: CarouselOptions(
+              padEnds: true,
+              enlargeCenterPage: true,
+              initialPage: 0,
+              autoPlay: true,
+              enableInfiniteScroll: false,
+              viewportFraction: 0.9,
+              height: 2000,
+              onPageChanged:
+                  (newIndex, reason) => currentIndex.value = newIndex,
             ),
+            itemBuilder:
+                (context, index, realIndex) => _buildProjectCard(index),
           ),
         ),
         _buildDots(currentIndex.value),

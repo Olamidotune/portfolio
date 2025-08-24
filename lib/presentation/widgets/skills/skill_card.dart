@@ -158,11 +158,7 @@ class _SkillCardState extends State<SkillCard>
                                         Flexible(
                                           child: Text(
                                             skill.name,
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              color: Colors.grey[600],
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                            style: TextStyle(),
                                             textAlign: TextAlign.center,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
@@ -188,10 +184,7 @@ class _SkillCardState extends State<SkillCard>
                           ),
                           child: Text(
                             '+${widget.skillCategory.skills.length - 4} more',
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
                         ),
                     ],

@@ -48,7 +48,9 @@ class PortfolioHome extends HookWidget {
                   physics: const BouncingScrollPhysics(),
                   child: Padding(
                     padding: EdgeInsets.all(
-                      constraints.maxWidth > 600 ? 100 : 2,
+                      constraints.maxWidth > 654
+                          ? 100
+                          : AppSpacing.horizontalSpacing,
                     ),
                     child: Column(
                       children: [
@@ -56,7 +58,7 @@ class PortfolioHome extends HookWidget {
                         constraints.maxWidth > 885
                             ? InfoDesktop(controller: controller)
                             : InfoMobile(controller: controller),
-                        AppSpacing.verticalSpaceLarge,
+                        AppSpacing.verticalSpaceHuge,
                         Text(
                           'Projects I have built over the years\nas a Flutter Developer',
                           style: Theme.of(
@@ -72,9 +74,9 @@ class PortfolioHome extends HookWidget {
                           height: 500,
                           child: ProjectSection(constraints: constraints),
                         ),
-                        AppSpacing.verticalSpaceLarge,
+                        AppSpacing.verticalSpaceHuge,
                         const SkillsSection(),
-                        AppSpacing.verticalSpaceLarge,
+                        AppSpacing.verticalSpaceHuge,
                         const ContactSection(),
                       ],
                     ),

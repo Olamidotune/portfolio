@@ -19,14 +19,7 @@ class SkillProficiencyBar extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              skill.name,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF2C3E50),
-              ),
-            ),
+            Text(skill.name),
             Text(
               '${(skill.proficiency * 100).toInt()}%',
               style: TextStyle(
