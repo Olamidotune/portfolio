@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio_app/constants/app_colors.dart';
+import 'package:my_portfolio_app/constants/app_spacing.dart';
 import 'package:my_portfolio_app/presentation/widgets/skills/skill_details_modal.dart';
 import 'package:my_portfolio_app/utils/skill_category.dart';
 
@@ -54,77 +56,78 @@ class _SkillCardState extends State<SkillCard>
             scale: _scaleAnimation.value,
             child: Transform.rotate(
               angle: _rotationAnimation.value,
-              child: Container(
-                padding: const EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: widget.skillCategory.primaryColor.withOpacity(0.1),
-                      blurRadius: 20,
-                      offset: const Offset(0, 10),
+              child: GestureDetector(
+                onTap: () => _showSkillDetails(context),
+                child: Container(
+                  padding: EdgeInsets.all(AppSpacing.containerPadding),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor.withValues(alpha: .1),
+                    border: Border.all(
+                      color: Theme.of(context).textTheme.bodyLarge!.color!,
                     ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Animated Icon
-                    TweenAnimationBuilder<double>(
-                      duration: const Duration(milliseconds: 600),
-                      tween: Tween(begin: 0.0, end: 1.0),
-                      builder: (context, value, child) {
-                        return Transform.scale(
-                          scale: value,
-                          child: Container(
-                            width: 70,
-                            height: 70,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  widget.skillCategory.primaryColor,
-                                  widget.skillCategory.secondaryColor,
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: widget.skillCategory.primaryColor
-                                      .withOpacity(0.3),
-                                  blurRadius: 15,
-                                  offset: const Offset(0, 8),
+                    borderRadius: BorderRadius.circular(20),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: widget.skillCategory.primaryColor.withOpacity(0.1),
+                    //     blurRadius: 20,
+                    //     offset: const Offset(4, 10),
+                    //   ),
+                    // ],
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Animated Icon
+                      TweenAnimationBuilder<double>(
+                        duration: const Duration(milliseconds: 600),
+                        tween: Tween(begin: 0.0, end: 1.0),
+                        builder: (context, value, child) {
+                          return Transform.scale(
+                            scale: value,
+                            child: Container(
+                              width: 70,
+                              height: 70,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    widget.skillCategory.primaryColor,
+                                    widget.skillCategory.secondaryColor,
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
                                 ),
-                              ],
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: widget.skillCategory.primaryColor
+                                        .withOpacity(0.3),
+                                    blurRadius: 15,
+                                    offset: const Offset(0, 8),
+                                  ),
+                                ],
+                              ),
+                              child: Icon(
+                                widget.skillCategory.icon,
+                                size: 35,
+                                color: Colors.white,
+                              ),
                             ),
-                            child: Icon(
-                              widget.skillCategory.icon,
-                              size: 35,
-                              color: Colors.white,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Category Title
-                    Text(
-                      widget.skillCategory.title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF2C3E50),
+                          );
+                        },
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 12),
+                      const SizedBox(height: 20),
 
-                    // Skills List
-                    Expanded(
-                      child: Column(
+                      // Category Title
+                      Text(
+                        widget.skillCategory.title,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 12),
+
+                      // Skills List
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:
                             widget.skillCategory.skills
@@ -171,28 +174,28 @@ class _SkillCardState extends State<SkillCard>
                                 )
                                 .toList(),
                       ),
-                    ),
 
-                    // View More Button
-                    if (widget.skillCategory.skills.length > 4)
-                      TextButton(
-                        onPressed: () => _showSkillDetails(context),
-                        style: TextButton.styleFrom(
-                          foregroundColor: widget.skillCategory.primaryColor,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
+                      // View More Button
+                      if (widget.skillCategory.skills.length > 4)
+                        TextButton(
+                          onPressed: () => _showSkillDetails(context),
+                          style: TextButton.styleFrom(
+                            foregroundColor: widget.skillCategory.primaryColor,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                          ),
+                          child: Text(
+                            '+${widget.skillCategory.skills.length - 4} more',
+                            style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                        child: Text(
-                          '+${widget.skillCategory.skills.length - 4} more',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -4,7 +4,6 @@ import 'package:my_portfolio_app/constants/app_colors.dart';
 import 'package:my_portfolio_app/constants/app_spacing.dart';
 import 'package:my_portfolio_app/presentation/contact_section.dart';
 import 'package:my_portfolio_app/presentation/project_section.dart';
-import 'package:my_portfolio_app/presentation/mobile/widgets/header_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/info_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/my_drawer.dart';
 import 'package:my_portfolio_app/presentation/skills_section.dart';
@@ -33,22 +32,26 @@ class PortfolioHome extends HookWidget {
             builder: (BuildContext context, BoxConstraints constraints) {
               return Scaffold(
                 key: scaffoldKey,
-                endDrawer: MyDrawer(controller: controller),
+                appBar: AppBar(
+                  automaticallyImplyLeading: false,
+                  title:
+                      constraints.maxWidth > 676
+                          ? HeaderDesktop(navTitles: navTitles)
+                          : const SizedBox.shrink(),
+                ),
+                endDrawer:
+                    constraints.maxWidth <= 676
+                        ? MyDrawer(controller: controller)
+                        : null,
                 body: SingleChildScrollView(
                   controller: scrollController,
                   physics: const BouncingScrollPhysics(),
                   child: Padding(
-                    padding: EdgeInsets.all(AppSpacing.horizontalSpacing),
+                    padding: EdgeInsets.all(
+                      constraints.maxWidth > 600 ? 100 : 2,
+                    ),
                     child: Column(
                       children: [
-                        constraints.maxWidth > 676
-                            ? HeaderDesktop(navTitles: navTitles)
-                            : HeaderMobile(
-                              onLogoTap: () {},
-                              onMenuTap: () {
-                                scaffoldKey.currentState?.openEndDrawer();
-                              },
-                            ),
                         AppSpacing.verticalSpaceMedium,
                         constraints.maxWidth > 885
                             ? InfoDesktop(controller: controller)
