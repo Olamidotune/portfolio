@@ -66,13 +66,6 @@ class _SkillCardState extends State<SkillCard>
                       color: Theme.of(context).textTheme.bodyLarge!.color!,
                     ),
                     borderRadius: BorderRadius.circular(20),
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     color: widget.skillCategory.primaryColor.withOpacity(0.1),
-                    //     blurRadius: 20,
-                    //     offset: const Offset(4, 10),
-                    //   ),
-                    // ],
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -117,23 +110,17 @@ class _SkillCardState extends State<SkillCard>
                         },
                       ),
                       const SizedBox(height: 20),
-
-                      // Category Title
                       Text(
                         widget.skillCategory.title,
                         style: const TextStyle(fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 12),
-
-                      // Skills List
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:
                             widget.skillCategory.skills
-                                .take(
-                                  4,
-                                ) // Show only first 4 skills to prevent overflow
+                                .take(4)
                                 .map(
                                   (skill) => Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -170,8 +157,6 @@ class _SkillCardState extends State<SkillCard>
                                 )
                                 .toList(),
                       ),
-
-                      // View More Button
                       if (widget.skillCategory.skills.length > 4)
                         TextButton(
                           onPressed: () => _showSkillDetails(context),
