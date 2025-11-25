@@ -4,7 +4,6 @@ import 'package:my_portfolio_app/constants/app_colors.dart';
 import 'package:my_portfolio_app/constants/app_spacing.dart';
 import 'package:my_portfolio_app/presentation/contact_section.dart';
 import 'package:my_portfolio_app/presentation/project_section.dart';
-import 'package:my_portfolio_app/presentation/mobile/widgets/header_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/info_mobile.dart';
 import 'package:my_portfolio_app/presentation/mobile/widgets/my_drawer.dart';
 import 'package:my_portfolio_app/presentation/skills_section.dart';
@@ -33,27 +32,34 @@ class PortfolioHome extends HookWidget {
             builder: (BuildContext context, BoxConstraints constraints) {
               return Scaffold(
                 key: scaffoldKey,
-                endDrawer: MyDrawer(controller: controller),
+                appBar: AppBar(
+                  automaticallyImplyLeading: false,
+                  title:
+                      constraints.maxWidth > 695
+                          ? HeaderDesktop(navTitles: navTitles)
+                          : const SizedBox.shrink(),
+                ),
+                endDrawer:
+                    constraints.maxWidth <= 695
+                        ? MyDrawer(controller: controller)
+                        : null,
                 body: SingleChildScrollView(
                   controller: scrollController,
                   physics: const BouncingScrollPhysics(),
                   child: Padding(
-                    padding: EdgeInsets.all(AppSpacing.horizontalSpacing),
+                    padding: EdgeInsets.symmetric(
+                      horizontal:
+                          constraints.maxWidth > 654
+                              ? 100
+                              : AppSpacing.horizontalSpacing,
+                    ),
                     child: Column(
                       children: [
-                        constraints.maxWidth > 676
-                            ? HeaderDesktop(navTitles: navTitles)
-                            : HeaderMobile(
-                              onLogoTap: () {},
-                              onMenuTap: () {
-                                scaffoldKey.currentState?.openEndDrawer();
-                              },
-                            ),
                         AppSpacing.verticalSpaceMedium,
                         constraints.maxWidth > 885
                             ? InfoDesktop(controller: controller)
                             : InfoMobile(controller: controller),
-                        AppSpacing.verticalSpaceLarge,
+                        AppSpacing.verticalSpaceHuge,
                         Text(
                           'Projects I have built over the years\nas a Flutter Developer',
                           style: Theme.of(
@@ -69,9 +75,9 @@ class PortfolioHome extends HookWidget {
                           height: 500,
                           child: ProjectSection(constraints: constraints),
                         ),
-                        AppSpacing.verticalSpaceLarge,
+                        AppSpacing.verticalSpaceHuge,
                         const SkillsSection(),
-                        AppSpacing.verticalSpaceLarge,
+                        AppSpacing.verticalSpaceHuge,
                         const ContactSection(),
                       ],
                     ),

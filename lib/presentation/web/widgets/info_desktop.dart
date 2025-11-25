@@ -29,9 +29,7 @@ class InfoDesktop extends StatelessWidget {
                   AppSpacing.verticalSpaceMedium,
                   Text(
                     "Detail-oriented and technically proficient Flutter developer with a strong foundation in building and  maintaining cross-platform mobile applications. Experienced in developing clean, scalable codebases using Bloc architecture and Freezed for robust state management. Demonstrates a solid grasp of API integration, data handling, and user role-based system design, with a focus on performance, reliability, and maintainability. Committed to continuous learning and delivering high-quality software solutions that align with business goals.",
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyLarge?.copyWith(color: AppColors.greyColor),
+                    style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.justify,
                   ),
                   AppSpacing.verticalSpaceMedium,
@@ -94,25 +92,35 @@ class AnimatedIntroText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedTextKit(
-      repeatForever: true,
-      pause: const Duration(milliseconds: 1000),
-      animatedTexts: [
-        TyperAnimatedText(
-          // "👋 Hi, I'm Egundeyi Oladotun David",
-          '',
-          textStyle: Theme.of(
-            context,
-          ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
-          speed: const Duration(milliseconds: 120),
-        ),
-        TyperAnimatedText(
-          // "👨‍💻 A Flutter Developer",
-          '',
-          textStyle: Theme.of(
-            context,
-          ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
-          speed: const Duration(milliseconds: 120),
+    return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        Text("👋 Hi, I'm ", style: Theme.of(context).textTheme.displayLarge),
+        SizedBox(
+          width:
+              MediaQuery.of(context).size.width > 600
+                  ? 400
+                  : MediaQuery.of(context).size.width * 0.8,
+          child: AnimatedTextKit(
+            repeatForever: true,
+            pause: const Duration(milliseconds: 1000),
+            animatedTexts: [
+              TyperAnimatedText(
+                "Egundeyi Oladotun.",
+                textStyle: Theme.of(
+                  context,
+                ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
+                speed: const Duration(milliseconds: 100),
+              ),
+              TyperAnimatedText(
+                "A Flutter Developer.",
+                textStyle: Theme.of(
+                  context,
+                ).textTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
+                speed: const Duration(milliseconds: 100),
+              ),
+            ],
+          ),
         ),
       ],
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio_app/constants/app_spacing.dart';
 import 'package:my_portfolio_app/presentation/widgets/project.dart';
 import 'package:my_portfolio_app/presentation/widgets/project_content.dart';
 import 'package:my_portfolio_app/presentation/widgets/project_details_modal.dart';
@@ -50,26 +49,23 @@ class _ProjectCardState extends State<ProjectCard>
       builder: (context, child) {
         return Transform.scale(
           scale: _scaleAnimation.value,
-          child: Padding(
-            padding: EdgeInsets.all(AppSpacing.alertDialogInsetPadding),
-            child: MouseRegion(
-              onEnter: (_) => _animationController.forward(),
-              onExit: (_) => _animationController.reverse(),
-              child: GestureDetector(
-                onTap: () => _showProjectDetails(context),
-                child: Card(
-                  elevation: _elevationAnimation.value,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Expanded(flex: 6, child: ProjectImage(widget: widget)),
-                      Expanded(flex: 10, child: ProjectContent(widget: widget)),
-                    ],
-                  ),
+          child: MouseRegion(
+            onEnter: (_) => _animationController.forward(),
+            onExit: (_) => _animationController.reverse(),
+            child: GestureDetector(
+              onTap: () => _showProjectDetails(context),
+              child: Card(
+                elevation: _elevationAnimation.value,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(flex: 6, child: ProjectImage(widget: widget)),
+                    Expanded(flex: 10, child: ProjectContent(widget: widget)),
+                  ],
                 ),
               ),
             ),
